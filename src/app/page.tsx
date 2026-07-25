@@ -140,7 +140,7 @@ const projects = [
   },
   {
     title: "Memora",
-    type: "Intelligent Wearable Healthcare System",
+    type: "Intelligent Wearable System",
     text: "IoT-based smart wearable system designed to enhance the safety and independence of Alzheimer's patients.",
     tags: ["ESP32", "GPS Module", "React Native", "Firebase"],
     color: "from-sky-400 to-indigo-500",
