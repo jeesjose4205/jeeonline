@@ -2,16 +2,468 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { --page: #f5f7f8; --surface: #fff; --text: #17202a; --muted: #64748b; --line: #e7eaee; }
-.dark { --page: #111827; --surface: #1d2938; --text: #f8fafc; --muted: #a9b5c5; --line: #344154; }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--page); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
-::selection { background: #d97757; color: white; }
-.content-card { background: var(--surface); border: 1px solid var(--line); box-shadow: 0 12px 35px rgba(15, 23, 42, .06); }
-.section-title { letter-spacing: -.04em; }
-.section-title::after { content: ''; display: block; margin-top: 12px; height: 3px; width: 46px; background: #d97757; border-radius: 99px; }
-.nav-link { transition: background .2s, color .2s; }
-.nav-link.active { background: rgba(255,255,255,.13); color: #fff; }
-.dark .content-card { box-shadow: none; }
-@media (max-width: 768px) { .content-card { border-radius: 1.25rem; } }
+
+/* =========================================================
+   ROOT COLORS
+========================================================= */
+
+:root {
+  --page: #f5f7f8;
+  --surface: #ffffff;
+  --text: #17202a;
+  --muted: #64748b;
+  --line: #e7eaee;
+
+  /* Blue accent */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+.dark {
+  --page: #111827;
+  --surface: #1d2938;
+  --text: #f8fafc;
+  --muted: #a9b5c5;
+  --line: #344154;
+
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+  --primary-light: #172554;
+}
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HTML
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+========================================================= */
+
+::selection {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CONTENT CARDS
+========================================================= */
+
+.content-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.section-title {
+  letter-spacing: -0.04em;
+}
+
+
+/*
+   IMPORTANT:
+   No ::after element here.
+
+   This removes the small horizontal
+   line that previously appeared below
+   headings such as:
+
+   About me
+   Skills & tools
+   Featured projects
+   Experience
+   Resume
+   Contact me
+*/
+
+.section-title::after {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* =========================================================
+   NAVIGATION LINKS
+========================================================= */
+
+.nav-link {
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+
+/* Active navigation item */
+
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.13);
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DARK MODE CONTENT CARD
+========================================================= */
+
+.dark .content-card {
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .content-card {
+    border-radius: 1.25rem;
+  }
+
+}
+
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
+.project-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 20px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.project-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 14px 35px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE AREA
+========================================================= */
+
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 245px;
+  overflow: hidden;
+  background: #f8fbff;
+}
+
+
+/* Project image */
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.04);
+
+  transition:
+    transform 0.5s ease;
+}
+
+
+.project-card:hover .project-image img {
+  transform: scale(1.08);
+}
+
+
+/* =========================================================
+   PROJECT CONTENT
+========================================================= */
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 315px;
+
+  background: #ffffff;
+
+  padding:
+    20px
+    24px
+    20px;
+}
+
+
+/* =========================================================
+   PROJECT TYPE
+========================================================= */
+
+.project-type {
+  color: #2563eb;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+========================================================= */
+
+.project-title {
+  margin-top: 8px;
+
+  color: #0f172a;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  line-height: 34px;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+.project-description {
+  margin-top: 12px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 22px;
+}
+
+
+/* =========================================================
+   PROJECT TECHNOLOGY TAGS
+========================================================= */
+
+.project-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 16px;
+}
+
+
+.project-tag {
+  border-radius: 6px;
+
+  background: #eff6ff;
+
+  padding:
+    4px
+    10px;
+
+  color: #1d4ed8;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  border:
+    1px solid #dbeafe;
+}
+
+
+/* =========================================================
+   PROJECT LINKS
+========================================================= */
+
+.project-links {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: auto;
+
+  padding-top: 16px;
+}
+
+
+.project-links a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.project-links a:hover {
+  color: #2563eb;
+}
+
+
+.project-links .live-demo {
+  color: #2563eb;
+}
+
+
+.project-links .live-demo:hover {
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   LIGHT BLUE BUTTON STYLE
+========================================================= */
+
+.blue-button {
+  background: #2563eb;
+
+  color: #ffffff;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.blue-button:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   BLUE FOCUS STATES
+========================================================= */
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #2563eb;
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.08);
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  transition:
+    color 0.2s ease;
+}
+
+
+/* =========================================================
+   MOBILE PROJECT CARDS
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .project-image {
+    height: 230px;
+  }
+
+
+  .project-content {
+    min-height: 300px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+}
